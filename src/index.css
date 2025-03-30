@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap');
+@import "tailwindcss";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --mau-trang: #fff;    
+    --mau-hong-dam:#f2dad4;
+    --mau-hong-nhat:rgba(173, 157, 148, 0.1);
+    --mau-hong-secondary:#faded8;
+    --mau-vang-nhat:#f4eeed;
+    --mau-do:rgb(240, 111, 66);
+    --mau-xanhduong:#21b375;
+    --header-height:40px;
+    --mau-den:#222;
+    --mau-xam:#ccc;
+    --mau-xamnhat:#848484;
+}
+
+.color__maudo {
+    color:var(--mau-do);
+}
+
+.color__mauden {
+    color:var(--mau-den);
+}
+
+.color__mauxam {
+    color:var(--mau-xam);
+}
+
+.color__mauxamnhat {
+    color:var(--mau-xamnhat);
+}
+
+
+.bg__mauxanhduong {
+    background-color:var(--mau-xanhduong);
+}
+
+.bg__mautrang {
+    background-color:var(--mau-trang);
+}
+
+.bg__hongdam {
+    background-color:var(--mau-hong-dam);
+}
+
+.bg__hongnhat {
+    background-color:var(--mau-hong-nhat);
+}
+
+.bg__vangnhat {
+    background-color:var(--mau-vang-nhat);
+}
+
+.bg__maudo {
+    background-color:var(--mau-do);
+}
+
+.header__height {
+    height:var(--header-height);
+}
+
+header.scrolled {
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.linear__gradient1 {
+    background: linear-gradient(rgb(255, 219, 214) 0%, rgb(255, 229, 225) 100%);
+}
+
+.linear__gradient2 {
+    background: linear-gradient(rgb(255, 238, 221) 0%, rgb(255, 244, 231) 100%);
+}
+
+.linear__gradient3 {
+    background: linear-gradient(rgb(255, 231, 217) 0%, rgb(254, 231, 225) 100%);
+}
+
+
+.link-menu.active::after{
+    width:100%;
+}
+
+.link-menu {
+    position: relative;
+}
+
+.link-menu::after {
+    content:"";
+    display:block;
+    position:absolute;
+    width:0;
+    height:2px;
+    background-color:var(--mau-do);
+    left:0;
+    bottom:-4px;
+    transition: width 0.3s ease-in-out;    
+}
+
+.link-menu:hover::after {
+    width:100%;
+}
+
+.shopping-bag {
+    position:relative;
+}
+
+.shopping-bag::after {
+    display:flex;
+    justify-content:center;
+    items-align:center;
+    content:'0';
+    right:-8px;
+    top:0;
+    position:absolute;
+    background-color:var(--mau-do);
+    border-radius:100%;
+    width:16px;
+    height:16px;
+    font-size:10px;
+    color:#fff;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+/* Khi fadeIn, opacity sẽ chuyển thành 1 */
+.fadeIn {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+/* Định dạng chung */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Màu mũi tên */
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.4s ease;
+    opacity:0.4; 
+}
+
+/* Đổi màu khi hover */
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity:1;
+}
+
+/* Nút prev (mũi tên trái) */
+.prev-btn {
+
+    left: 0px; /* Điều chỉnh vị trí */
+}
+
+/* Nút next (mũi tên phải) */
+.next-btn {
+    right: 0px;
+}
+
+#pagination i {
+    color: #ccc; /* Mặc định màu xám */
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#pagination i.active {
+    color: #222; /* Mặc định màu xám */    
+}
+
+.flat__off::before {
+    content:'';
+    width:12px;
+    background:var(--mau-do);
+    margin-right:4px;
+    display:inline-block;
+    height:1px;
+    vertical-align: middle;
+    margin-right:10px;
+}
+
+.discover-button {
+
+    background-color: white;
+    color: var(--mau-den);    
+    border: none;    
+    cursor: pointer;
+    box-shadow:0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+    width:max-content;
+}
+
+.discover-button:hover {
+    transform:translateY(-5px);
+    box-shadow: 0px 8px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.blog-container {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px, 1fr));
+
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-rows: repeat(3, auto); 
+   /* grid-template-rows: repeat(4, auto); */
+      
+}  
+
+article {
+    display: grid;    
+    grid-template-rows: subgrid;
+    grid-row: 1/4;
+}
+
+
+article > img {
+    grid-row:1/2;        
+}
+
+h3 {
+    grid-row:2/3;
+}
+
+p {
+    grid-row:3/4;    
+}

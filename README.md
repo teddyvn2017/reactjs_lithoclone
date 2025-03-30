@@ -1,2 +1,2 @@
-# reactjs_lithoclone
-clone a simple furniture from litho template, using tailwind 4.x and gsap
+cách 1. npm create vite@latest - tạo mới
+cách 2. tạo ở thư mục đang đứng/ hiện tại: npm create vite@latest -- --template react .
