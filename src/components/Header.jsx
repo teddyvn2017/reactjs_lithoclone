@@ -9,11 +9,16 @@ import {
 	RiCloseLine,
   } from "react-icons/ri";
 
+import { useSelector } from "react-redux";	
+
 const Header = () => {
 
 	const [isScrolled, setIsScrolled] = useState(false);	
 	const [isMenuOpen, setIsMenuOpen] = useState(false);	
 	const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+	const cartItems = useSelector((state) => state.cart.cartItems || []); 
+	const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -67,7 +72,13 @@ const Header = () => {
 								<RiSearchLine id="btnSearch" className="cursor-pointer" />
 								<div className="shopping-bag-container">
 									<RiShoppingBag3Line id="btnCart" className="shopping-bag cursor-pointer" />
-									<span className="cart-count">0</span>	
+									{
+
+										totalQuantity > 0 && (
+											<span className="cart-count">{totalQuantity}</span>
+										)
+									}
+									{/* <span className="cart-count">0</span>	 */}
 								</div>
 							</div>
 					
