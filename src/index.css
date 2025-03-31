@@ -107,15 +107,17 @@ header.scrolled {
     width:100%;
 }
 
-.shopping-bag {
+.shopping-bag-container {
     position:relative;
+    display: inline-block; /* Để đảm bảo phần tử có kích thước */
 }
 
-.shopping-bag::after {
+/* .shopping-bag-container::after {
+    
+    content:'0';
     display:flex;
     justify-content:center;
-    items-align:center;
-    content:'0';
+    align-items: center;
     right:-8px;
     top:0;
     position:absolute;
@@ -125,6 +127,23 @@ header.scrolled {
     height:16px;
     font-size:10px;
     color:#fff;
+} */
+
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    
+    width: 16px;
+    height: 16px;
+    background-color:var(--mau-do);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fadeOut {

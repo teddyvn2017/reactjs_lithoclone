@@ -38,7 +38,6 @@ const Hero = () => {
 		tl.to(btnDiscoverRef.current,{ opacity: 0, duration: 1, ease: "power4.out" },"-=0.2");
 		tl.to(priceCircleRef.current,{ scale: 0, opacity: 0 , duration:0.5, ease: "power4.out" },"-=0.3");
 
-
 		//1.ảnh ghế, largeCircle , smallCircle cùng fade-out
 		tl.to([imgRef.current,largeCircleRef.current,smallCircleRef.current],
 			 {opacity: 0, scale:0.95, duration: 0.5,ease: "power4.out" }, "-=0.3");
@@ -51,14 +50,10 @@ const Hero = () => {
 			{opacity: 1, scale:1, duration: 0.6,ease: "poswer4.out" });
 
 		// 4. Hiển thị lại nút Discover với hiệu ứng mượt mà
-		// Hiển thị lại button Discover
+		
 		tl.to(btnDiscoverRef.current, { opacity: 1, duration: 1, ease: "power4.out" }, "-=0.5");
 		tl.to(priceCircleRef.current,{ scale: 1, opacity: 1 , duration: 0.6, ease: "power4.out" },"-=0.3");	
-		// 5 priceCircle scale từ nhỏ -> lớn và opacity từ 0 -> 1
-		// tl.fromTo(priceCircleRef.current, 
-		// 	{ scale: 0, opacity: 0 }, 
-		// 	{ scale: 1, opacity: 1, duration: 0.5, ease: "power4.out" }, "-=0.5" // chạy sớm hơn 1s
-		// );
+		
 	}
 
 	const animateText = (txt, newText) => {
@@ -129,7 +124,7 @@ const Hero = () => {
 					{/* shadow-[0px_10px_20px_rgba(0,0,0,0.1)] : x y blur color */}
 					<button 
 						ref={btnDiscoverRef}
-						id="btnDiscover" className="lg:mt-10 text-[12px] px-4 py-3 bg-white text-gray-700 font-normal 
+						id = "btnDiscover" className="lg:mt-10 text-[12px] px-4 py-3 bg-white text-gray-700 font-normal 
 						shadow-[0px_10px_20px_rgba(0,0,0,0.1)]  
 						hover:shadow-[0px_15px_40px_rgba(0,0,0,0.15)] 
 						w-fit transition-shadow duration-300 mt-4 md:text-sm cursor-pointer">
