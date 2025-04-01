@@ -10,6 +10,7 @@ import {
   } from "react-icons/ri";
 
 import { useSelector } from "react-redux";	
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -35,14 +36,16 @@ const Header = () => {
 		<header className={`fixed w-full top-0 left-0 z-50 py-4 min-h-[68px] transition-colors duration-300 px-8
 			${isScrolled ? "bg-white shadow-md" : "bg-transparent"}`}>
 			<nav className="mx-auto flex flex-row justify-between items-center">
-				
-				<img src={logo_orange} alt="logo" className="max-h-[36px]" />  {/*  chieu cao 36 + 16*2 = 68px */}
+				{/*  chieu cao 36 + 16*2 = 68px */}
+				<Link to="/"><img src={logo_orange} alt="logo" className="max-h-[36px]" /></Link>				
 				
 				{/* Menu cho Desktop */}
 				<div className="flex flex-row gap-8">				
 					<div className="flex flex-row gap-8">
 						<ul className="hidden md:flex gap-8">
-							<li><a href="#" className="link-menu active">Home</a></li>
+							<li>
+								<a href="/" className="link-menu active">Home</a>
+							</li>
 							<li><a href="#" className="link-menu">About Us</a></li>				
 							<li className="relative group" id="products-menu">
 								<a href="#"
@@ -71,7 +74,9 @@ const Header = () => {
 							<div className="flex flex-row gap-6 text-[20px]">							
 								<RiSearchLine id="btnSearch" className="cursor-pointer" />
 								<div className="shopping-bag-container">
-									<RiShoppingBag3Line id="btnCart" className="shopping-bag cursor-pointer" />
+									<Link to="/gio-hang">
+										<RiShoppingBag3Line id="btnCart" className="shopping-bag cursor-pointer" />
+									</Link>
 									{
 
 										totalQuantity > 0 && (

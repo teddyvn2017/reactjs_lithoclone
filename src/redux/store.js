@@ -1,12 +1,28 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { combineReducers } from "redux";
 import cartReducer from "./cartSlice";
 
-// state.cart: Đây là reducer cartReducer đã được khai báo trong store.js.
-const store = configureStore({
-    reducer: {
-        // khai báo cartReducer với tên key là cart trong Redux store.
-        cart: cartReducer   ,
-    },
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const rootReducer = combineReducers({
+  cart: cartReducer,
 });
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST"],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);

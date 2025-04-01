@@ -127,7 +127,7 @@ const Products = () => {
 				<h2 className="color__mauden text-3xl text-center font-semibold">New products</h2>
 			</div>
 						
-			<div className="flex items-center justify-center gap-8 flex-row flex-wrap md:justify-center px-8	py-16">
+			<div className="flex items-center justify-center gap-[24px] flex-row flex-wrap md:justify-center px-8	py-16">
 				{/* item  */}
                 {
                     products.map((product,index) => (

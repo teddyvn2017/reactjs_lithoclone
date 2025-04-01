@@ -7,7 +7,7 @@ import logo4 from '../assets/img/logo4.jpg';
 const Partner = () => {
   return (
     <section class="bg-white w-full">
-			<div class="container max-w-[800px] flex items-center justify-around 
+			<div className="container max-w-[800px] flex items-center justify-around 
 						flex-row md:gap-12 gap-16 lg:gap-16 px-8 py-16 md:py-10 mx-auto flex-wrap">
 				<img src={logo1} alt="logo01" />
 				<img src={logo2} alt="logo02" />

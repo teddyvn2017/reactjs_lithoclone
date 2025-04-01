@@ -24,7 +24,7 @@ const ScollTop = () => {
 		<button 
 			onClick={scrollToTop}
 			id="scrollToTopBtn" 
-			class={`fixed bottom-20 right-10 bg-white text-gray-900 p-3 rounded-full 
+			className={`fixed bottom-20 right-10 bg-white text-gray-900 p-3 rounded-full 
 					shadow-lg transition-all duration-500 w-[48px] h-[48px] cursor-pointer hover:bg-black hover:text-white z-50
 					${isVisible ? "block" : "hidden"}`	}>
 			<RiArrowUpLine size={24} />
