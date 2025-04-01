@@ -5,6 +5,19 @@ import { removeFromCart,updateQuantity } from "../redux/cartSlice";
 // import { updateQuantity } from "../redux/cartSlice"; 
 const CartPage = () => {
 
+    useEffect(() => {
+        document.title = "Giỏ hàng - Litho Furniture";
+        // const metaDesc = document.querySelector('meta[name="description"]');
+        // if (metaDesc) {
+        //     metaDesc.content = "Chung toi cung cap noi that gia re, phong cach Chau Au, ben gi";
+        // } else {
+        //     const newMeta = document.createElement('meta');
+        //     newMeta.name = "description";
+        //     newMeta.content = "Chung toi cung cap noi that gia re, phong cach Chau Au, ben gi";
+        //     document.head.appendChild(newMeta);
+        // }
+    },);
+
     // Lấy danh sách sản phẩm từ Redux store
     const cartItems = useSelector((state) => state.cart.cartItems || []);
 
