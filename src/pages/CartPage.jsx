@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../layouts/Layout'; 
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart,updateQuantity } from "../redux/cartSlice";

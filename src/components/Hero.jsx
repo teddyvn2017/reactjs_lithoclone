@@ -49,8 +49,7 @@ const Hero = () => {
 		tl.to([imgRef.current,largeCircleRef.current,smallCircleRef.current], 
 			{opacity: 1, scale:1, duration: 0.6,ease: "poswer4.out" });
 
-		// 4. Hiển thị lại nút Discover với hiệu ứng mượt mà
-		
+		// 4. Hiển thị lại nút Discover với hiệu ứng mượt mà		
 		tl.to(btnDiscoverRef.current, { opacity: 1, duration: 1, ease: "power4.out" }, "-=0.5");
 		tl.to(priceCircleRef.current,{ scale: 1, opacity: 1 , duration: 0.6, ease: "power4.out" },"-=0.3");	
 		
@@ -84,6 +83,40 @@ const Hero = () => {
         gsap.fromTo(imgRef.current, 
             {opacity: 0,scale:0.95},{opacity: 1,scale:1,duration: 1, ease: "power2.out"});		
     }, [currentIndex]);
+
+
+	useEffect(() => {
+		const smallCircle = smallCircleRef.current;
+		const largeCircle = largeCircleRef.current;
+
+		if (!smallCircle || !largeCircle) return;
+
+		const rect = smallCircle.getBoundingClientRect();
+		const centerX = rect.left + rect.width / 2; 
+		const centerY = rect.top + rect.height / 2; 
+		const radius = 24; 
+		const points = 16;
+
+		let angle = 0;
+		const coordinates = [];	
+
+		for (let i = 0; i < points; i++) {
+			const x = Math.round(centerX + radius * Math.cos(angle));
+			const y = Math.round(centerY + radius * Math.sin(angle));
+			coordinates.push({ x, y });
+			angle += (Math.PI * 2) / points;
+		}
+
+		const tl = gsap.timeline({repeat: -1,ease: "none"});	
+		coordinates.forEach(({ x, y }, index) => {
+			tl.to([smallCircle, largeCircle], {
+				x: x - centerX, // Điều chỉnh vị trí x của small_circle và large_circle
+				y: y - centerY, // Điều chỉnh vị trí y của small_circle và large_circle
+				duration:0.5, // Thời gian chuyển động        
+				ease: "none"
+			});
+		});
+	}, []);
 
 	// lưu ý chỗ này không phải là next = next + 1, mà là cập nhật giá trị trước đó
     const handleNext = () => {

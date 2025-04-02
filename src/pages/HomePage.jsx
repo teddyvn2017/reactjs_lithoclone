@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../layouts/Layout';
 import Hero from '../components/Hero';
 import Shop from '../components/Shop';
