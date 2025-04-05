@@ -1,124 +1,28 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { RiShoppingBag3Line} from "react-icons/ri";
-const Products = () => {
+import { getProducts } from '../api/products';
 
+const Products = () => {
+    const base_url = "http://localhost:1337";
     const dispatch = useDispatch();
-    const products = [
-        {
-          id: 1,
-          img1: "/assets/img/decor_classic_01.jpg",
-          img2: "/assets/img/decor_classic_02.jpg",
-          title: "Hanging Light",
-          price: 12,
-          salePrice: null,
-          sale: false
-        },
-        {
-          id: 2,
-          img1: "/assets/img/decor_classic_03.jpg",
-          img2: "/assets/img/decor_classic_04.jpg",
-          title: "Study Lamp",
-          price: 12,
-          salePrice: null,
-          sale: false
-        },
-        {
-          id: 3,
-          img1: "/assets/img/decor_classic_05.jpg",
-          img2: "/assets/img/decor_classic_06.jpg",
-          title: "Classic Lamp",
-          price: 20,
-          salePrice: 12,
-          sale: true
-        },
-        {
-          id: 4,
-          img1: "/assets/img/decor_classic_07.jpg",
-          img2: "/assets/img/decor_classic_08.jpg",
-          title: "Brown Crystal",
-          price: 20,
-          salePrice: 12,
-          sale: true
-        },
-        {
-          id: 5,
-          img1: "/assets/img/decor_classic_09.jpg",
-          img2: "/assets/img/decor_classic_10.jpg",
-          title: "Wooden Stool",
-          price: 12,
-          salePrice: null,
-          sale: false
-        },
-        {
-          id: 6,
-          img1: "/assets/img/decor_classic_12.jpg",
-          img2: "/assets/img/decor_classic_13.jpg",
-          title: "Aether Vasee",
-          price: 12,
-          salePrice: null,
-          sale: false
-        },
-        {
-          id: 7,
-          img1: "/assets/img/decor_classic_13.jpg",
-          img2: "/assets/img/decor_classic_14.jpg",
-          title: "Wooden Bowl",
-          price: 12,
-          salePrice: null,
-          sale: false
-        },
-        {
-          id: 8,
-          img1: "/assets/img/decor_classic_15.jpg",
-          img2: "/assets/img/decor_classic_16.jpg",
-          title: "Top With Pleated",
-          price: 20,
-          salePrice: 12,
-          sale: true
-        },
-        {
-          id: 9,
-          img1: "/assets/img/decor_classic_17.jpg",
-          img2: "/assets/img/decor_classic_18.jpg",
-          title: "Fabric Table Lamp",
-          price: 20,
-          salePrice: 12,
-          sale: true
-        },
-        {
-          id: 10,
-          img1: "/assets/img/decor_classic_19.jpg",
-          img2: "/assets/img/decor_classic_20.jpg",
-          title: "Texture Mirror",
-          price: 12,
-          salePrice: null,
-          sale: false
-        }];
-    
-    // cách làm cũ, đơn giản cho người mới
-    // const [cart, setCart] = React.useState([]); //giỏ hàng  
-    // const addToCart = (product) => {
-    //     console.log("add to cart");
-    //     setCart((prevCart) => {
-    //         const existingItem = prevCart.find((item) => item.id === product.id);
-    //         if (existingItem) {
-    //             // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng
-    //             return prevCart.map((item) => {
-    //                 item.id === product.id ? {...item, quantity: item.quantity + 1} : item;
-    //             });
-    //         }
-    //         else {
-    //             // Nếu sản phẩm chưa có trong giỏ hàng, thêm với quantity = 1
-    //             return [...prevCart, { ...product, quantity: 1 }];
-    //         }
-    //     });
-    // }  
+       
     // Hàm gọi Redux action addToCart
     const handleAddToCart  = (product) => {
         dispatch(addToCart(product)); //// Gọi action addToCart từ Redux
     }
+
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+
+		getProducts().then((res) => {
+			console.log("Dữ liệu từ API:", res);
+			setProducts(res);
+		});
+
+	},[]);
 
     return (
         <section className="w-full border-t-[1px] border-[#e2e2e2] bg-white pt-16">
@@ -139,11 +43,12 @@ const Products = () => {
 						    
                             {/*  ảnh chính  */}
                             <img className="w-full object-cover will-change-opacity transition-opacity duration-400 group-hover:opacity-0" 
-                                src={product.img1}
-                                alt={product.title} /> 
-
+                                    src={product?.anh_san_pham1?.url ? `${base_url}${product.anh_san_pham1.url}` : `${base_url}/uploads/default_image.jpg`}
+                                alt={product.ten_san_pham} /> 
+                            
                             <img className="absolute inset-0 w-full h-auto object-cover opacity-0 transition-opacity duration-400 group-hover:opacity-100"
-                                src={product.img2} alt={product.title} />
+                                    src={product?.anh_san_pham1?.url ? `${base_url}${product.anh_san_pham2.url}` : `${base_url}/uploads/default_image.jpg`}
+                                alt={product.ten_san_pham} />
 						
                             {/* <!-- add to cart --> */}
                             <div className="flex flex-row justify-center items-center gap-2
