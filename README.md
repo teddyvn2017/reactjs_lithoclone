@@ -1,3 +1,3 @@
 ![alt text](image.png)
 
-link: https://lithoclone.netlify.app/
+demo: https://lithoclone.netlify.app/
