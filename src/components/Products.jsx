@@ -18,7 +18,7 @@ const Products = () => {
 	useEffect(() => {
 
 		getProducts().then((res) => {
-			console.log("Dữ liệu từ API:", res);
+			// console.log("Dữ liệu từ API:", res);
 			setProducts(res);
 		});
 
